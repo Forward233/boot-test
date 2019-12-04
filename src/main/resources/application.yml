@@ -1,0 +1,6 @@
+person:
+  name: yhl
+  gender: 男
+  car:
+    car-name: bwm
+    car-color: yellow
