@@ -1,6 +1,6 @@
 person:
   name: yhl
-  gender: 男
+  gender: ${name}
   car:
     car-name: bwm
     car-color: yellow

@@ -18,6 +18,8 @@ public class ClassLoaderTest extends ClassLoader{
                     String fileName = name.substring(name.lastIndexOf(".") + 1) + ".class";
                     InputStream resourceAsStream = getClass().getResourceAsStream(fileName);
 
+
+
                     if (resourceAsStream == null)
                         return super.loadClass(name);
 
@@ -50,27 +52,8 @@ public class ClassLoaderTest extends ClassLoader{
             }
         };
 
-        ClassLoaderTest test = new ClassLoaderTest();
-        Object obj = test.findClass("com.boot.demo.jvm.ClassLoaderTest").newInstance();
+        Object obj = myLoaderFind.loadClass("com.boot.demo.jvm.ClassLoaderTest").newInstance();
         System.out.println(obj.getClass().getClassLoader());
         System.out.println(obj instanceof com.boot.demo.jvm.ClassLoaderTest);
-    }
-
-    @Override
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
-        String fileName = name.substring(name.lastIndexOf(".") + 1) + ".class";
-        InputStream resourceAsStream = getClass().getResourceAsStream(fileName);
-        if(resourceAsStream == null){
-            return super.findClass(name);
-        }else {
-            byte[] b = new byte[0];
-            try {
-                b = new byte[resourceAsStream.available()];
-                resourceAsStream.read(b);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return defineClass(name, b, 0, b.length);
-        }
     }
 }
