@@ -1,6 +1,7 @@
 package com.boot.demo.seckill;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * Description: write some description
  */
 @Data
+@ToString
 public class OrderReq implements Serializable {
 
     private static final long serialVersionUID = 3869674230814433230L;

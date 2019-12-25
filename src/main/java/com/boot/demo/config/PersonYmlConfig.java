@@ -16,9 +16,11 @@ public class PersonYmlConfig {
     private String name;
     private String gender;
     private Car car;
+
     @Data
     public static class Car {
         String carName;
         String carColor;
     }
+
 }

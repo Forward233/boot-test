@@ -1,4 +1,4 @@
-package com.boot.demo;
+package com.boot.demo.controller;
 
 import com.boot.demo.config.PersonYmlConfig;
 import com.boot.demo.entity.UserBean;
