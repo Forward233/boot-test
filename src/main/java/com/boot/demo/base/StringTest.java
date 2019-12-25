@@ -18,6 +18,14 @@ public class StringTest {
         b[1] = 5;
         System.out.println(a[1]);
 
+        Object o1 = new Object();
+        Object o2 = new Object();
+        System.out.println(o1);
+        System.out.println(o2);
+        o1 = o2;
+        System.out.println(o1);
+        o2 = null;
+        System.out.println(o1);
     }
 
     void foo(String str) {
