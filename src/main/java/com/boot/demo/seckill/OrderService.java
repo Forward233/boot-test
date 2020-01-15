@@ -38,6 +38,7 @@ public class OrderService {
                 redisTemplate.opsForValue().setIfAbsent(key, num, Duration.ofMinutes(3));
             }
 
+
             // 库存
             Integer buyNum = orderReq.getBuyNum();
             if (Integer.parseInt(num) < buyNum) {
