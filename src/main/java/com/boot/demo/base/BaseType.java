@@ -1,5 +1,9 @@
 package com.boot.demo.base;
 
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Author: yhl
  * DateTime: 2019/12/6 7:40
@@ -7,11 +11,11 @@ package com.boot.demo.base;
  */
 public class BaseType {
 
-    public static void main(String[] args) {
-        float a = 1e-6f;
-        float b = 0f;
-        if (b >= -a && b <= -a) {
-            
-        }
+    public static void main(String[] args) throws ParseException {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        final int year= calendar.get(Calendar.YEAR);
+        System.out.println(year);
     }
+
 }
