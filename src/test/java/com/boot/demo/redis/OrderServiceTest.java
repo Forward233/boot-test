@@ -1,5 +1,7 @@
-package com.boot.demo.seckill;
+package com.boot.demo.redis;
 
+import com.boot.demo.redis.seckill.OrderReq;
+import com.boot.demo.redis.seckill.OrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

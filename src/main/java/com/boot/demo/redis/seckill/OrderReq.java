@@ -1,4 +1,4 @@
-package com.boot.demo.seckill;
+package com.boot.demo.redis.seckill;
 
 import lombok.Data;
 import lombok.ToString;
