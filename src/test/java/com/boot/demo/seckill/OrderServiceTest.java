@@ -2,6 +2,7 @@ package com.boot.demo.seckill;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -18,6 +19,7 @@ import java.util.concurrent.Executors;
 @SpringBootTest
 class OrderServiceTest {
 
+    @Qualifier("applicationTaskExecutor")
     @Autowired
     private TaskExecutor taskExecutor;
 
