@@ -1,7 +1,7 @@
 package com.boot.demo.controller;
 
-import com.boot.demo.seckill.OrderReq;
-import com.boot.demo.seckill.OrderService;
+import com.boot.demo.redis.seckill.OrderReq;
+import com.boot.demo.redis.seckill.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

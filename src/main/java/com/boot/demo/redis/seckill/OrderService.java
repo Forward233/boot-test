@@ -1,4 +1,4 @@
-package com.boot.demo.seckill;
+package com.boot.demo.redis.seckill;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,7 @@ public class OrderService {
     public void orderWithDecr(OrderReq orderReq) {
 
         try {
+            // 提前预热库存key到redis,以下可省略
             String key = "product:" + orderReq.getProductId();
             String num = redisTemplate.opsForValue().get(key);
             if (num == null) {
@@ -38,28 +39,23 @@ public class OrderService {
                 redisTemplate.opsForValue().setIfAbsent(key, num, Duration.ofMinutes(3));
             }
 
-
-            // 库存
+            // 购买数量
             Integer buyNum = orderReq.getBuyNum();
             if (Integer.parseInt(num) < buyNum) {
                 log.info("库存不足，库存：{}，购买数量：{}", num, orderReq.getBuyNum());
                 return;
             }
 
-            // 超库存或者库存为0,redis中库存为0或者负，则表示已没有库存
+            // 超库存或者库存为0,redis中库存为0或者负，则表示已没有库存，原子操作
             if (redisTemplate.opsForValue().decrement(key, buyNum) >= 0) {
                 //mysql减库存，生成订单，需要支持事务
                 log.info("购买成功，库存：{}，购买数量：{}", num, orderReq.getBuyNum());
                 // todo
+                // mysql 减库存
             } else {
                 // 补redis中库存
                 final Long increment = redisTemplate.opsForValue().increment(key, buyNum);
                 log.info("库存不足，库存：{}，购买数量：{}", num, orderReq.getBuyNum());
-            }
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
         } catch (Exception e) {
             log.info("-------------:{}", e.toString());
