@@ -1,7 +1,5 @@
 package com.boot.demo.lock;
 
-import com.alibaba.fastjson.JSONObject;
-
 /**
  * @author: yhl
  * @DateTime: 2020/3/6 7:49
@@ -14,8 +12,8 @@ public class SynchronizedTest {
 
     static int i = 10;
 
-    public synchronized void obj1() {
-        synchronized (this) {
+    public  void obj1() {
+        synchronized (Integer.class) {
             while (i-- > 0) {
                 System.out.println(Thread.currentThread().getName() + " : " + i);
                 try {
@@ -37,8 +35,8 @@ public class SynchronizedTest {
         }
     }
 
-    public synchronized void obj3() {
-        synchronized (this) {
+    public  void obj3() {
+        synchronized (String.class) {
             while (i-- > 0) {
                 System.out.println(Thread.currentThread().getName() + " : " + i);
                 try {
@@ -54,10 +52,5 @@ public class SynchronizedTest {
         final SynchronizedTest synchronizedTest1 = new SynchronizedTest();
         new Thread(synchronizedTest::obj1).start();
         new Thread(synchronizedTest::obj3).start();
-
-        JSONObject res = new JSONObject();
-        res.put("code", -1);
-        res.put("msg", "请登录");
-
     }
 }
