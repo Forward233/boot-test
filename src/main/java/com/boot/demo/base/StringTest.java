@@ -12,23 +12,16 @@ public class StringTest {
         StringTest test = new StringTest();
         test.foo(str);
         System.out.println(str);
-
-        int[] a = {1,2};
-        int[] b = a;
-        b[1] = 5;
-        System.out.println(a[1]);
-
-        Object o1 = new Object();
-        Object o2 = new Object();
-        System.out.println(o1);
-        System.out.println(o2);
-        o1 = o2;
-        System.out.println(o1);
-        o2 = null;
-        System.out.println(o1);
+        StringBuilder sb = new StringBuilder("hello");
+        test.foo(sb);
+        System.out.println(sb.toString());
     }
 
     void foo(String str) {
         str = "world";
+    }
+
+    void foo(StringBuilder sb){
+        sb.append(" world");
     }
 }
