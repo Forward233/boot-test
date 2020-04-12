@@ -12,8 +12,21 @@ public class SynchronizedTest {
 
     static int i = 10;
 
-    public  void obj1() {
-        synchronized (Integer.class) {
+    public void obj() {
+        synchronized (test) {
+            while (i-- > 0) {
+                System.out.println(Thread.currentThread().getName() + " : " + i);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ie) {
+                }
+            }
+        }
+    }
+
+
+    public void obj1() {
+        synchronized (test) {
             while (i-- > 0) {
                 System.out.println(Thread.currentThread().getName() + " : " + i);
                 try {
@@ -35,7 +48,7 @@ public class SynchronizedTest {
         }
     }
 
-    public  void obj3() {
+    public void obj3() {
         synchronized (String.class) {
             while (i-- > 0) {
                 System.out.println(Thread.currentThread().getName() + " : " + i);
@@ -51,6 +64,6 @@ public class SynchronizedTest {
         final SynchronizedTest synchronizedTest = new SynchronizedTest();
         final SynchronizedTest synchronizedTest1 = new SynchronizedTest();
         new Thread(synchronizedTest::obj1).start();
-        new Thread(synchronizedTest::obj3).start();
+        new Thread(synchronizedTest1::obj).start();
     }
 }
