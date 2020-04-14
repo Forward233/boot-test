@@ -15,6 +15,12 @@ public class CusProTest {
         // 生产者
         new Thread(() ->{
             while (true) {
+                // 模拟生产耗时
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 synchronized (queue){
                     if (queue.size() == 10) {
                         try {
@@ -46,6 +52,13 @@ public class CusProTest {
                     queue.poll();
                     queue.notifyAll();
                     System.out.println("从队列取中取走一个元素，队列空间：" + queue.size());
+                }
+
+                // 模拟消费耗时
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }).start();

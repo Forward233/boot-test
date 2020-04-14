@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -24,7 +23,7 @@ public class TestController {
     }
 
     @RequestMapping("/param_type")
-    public String testArg(@RequestParam("type") Integer type, @RequestParam("name") String name) {
+    public String testArg(Integer type,String name) {
         return type + ":" + name;
     }
 
