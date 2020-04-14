@@ -25,6 +25,9 @@ public class Client {
                 (proxy, method, argss) ->
                 {
                     Object o = method.invoke(actor, argss);
+                    if (method.getName().contains("set")) {
+                        System.out.println(actor.getName());
+                    }
                     /**
                      * 执行被代理对象的任何方法都会经过该方法，该方法有拦截的功能
                      * Object proxy：代理对象的引用。不一定每次都会有
@@ -33,22 +36,21 @@ public class Client {
                      * @return 当前执行方法的返回值
                      */
                     //1.取出执行方法中的参数
-                    Float money = (Float) argss[0];
                     //2.判断当前执行的什么方法
                     if ("basicAct".equals(method.getName())) {
+                        Float money = (Float) argss[0];
                         if (money > 10000)
                             System.out.println("basicAct exec");
-//                            method.invoke(actor, money);
+                            method.invoke(actor, money);
                     }
                     if ("advancedAct".equals(method.getName())) {
+                        Float money = (Float) argss[0];
                         if (money > 50000)
                             method.invoke(actor, money);
                     }
                     return o;
                 });
-        proxyActor.basicAct(20000);
-        final String name = actor.getName();
-        System.out.println(name);
-
+//        proxyActor.basicAct(20000);
+        proxyActor.setName("yhl");
     }
 }
