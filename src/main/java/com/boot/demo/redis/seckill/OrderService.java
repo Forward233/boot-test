@@ -35,7 +35,7 @@ public class OrderService {
             if (num == null) {
                 // select num from product where id = ?
                 // todo
-                num = "0";
+                num = "1000";
                 redisTemplate.opsForValue().setIfAbsent(key, num, Duration.ofMinutes(3));
             }
 

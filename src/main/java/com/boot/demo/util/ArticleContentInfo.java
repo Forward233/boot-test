@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 
 /**
  * @author: yhl
@@ -75,5 +76,10 @@ public class ArticleContentInfo implements Serializable {
     private String shareMessageContent;
     @JSONField(name = "share_icon")
     private String shareIcon;
+
+    public static void main(String[] args) throws UnsupportedEncodingException {
+
+        System.out.println("12".getBytes("utf-8").length);
+    }
 
 }
