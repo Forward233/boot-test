@@ -16,13 +16,15 @@ public class PersonDao {
 
     private int anInt;
 
+    public PersonDao(int a) {
+        this.anInt = a;
+    }
+    public PersonDao() {
+    }
+
     @Override
     public int hashCode() {
         return 1;
-    }
-
-    public PersonDao(int a) {
-        this.anInt = a;
     }
 
     public static void main(String[] args) {

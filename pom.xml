@@ -136,11 +136,11 @@
             <version>1.19</version>
         </dependency>
 
-        <dependency>
-            <groupId>cn.dslcode</groupId>
-            <artifactId>distributelock-spring-boot-starter</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.dslcode</groupId>-->
+<!--            <artifactId>distributelock-spring-boot-starter</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter -->
         <dependency>

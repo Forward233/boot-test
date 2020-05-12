@@ -13,5 +13,9 @@ public class ForTest {
         for (long i = 0; i < 1000000000L; i++) {
         }
         System.out.println(System.currentTimeMillis() - l);
+
+        System.out.println("a".hashCode());
+        System.out.println("a".hashCode());
+        System.out.println("a".hashCode());
     }
 }
