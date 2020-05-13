@@ -21,7 +21,7 @@ public class StringTest {
         str = "world";
     }
 
-    void foo(StringBuilder sb){
+    void foo(StringBuilder sb) {
         sb.append(" world");
     }
 }

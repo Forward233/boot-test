@@ -13,7 +13,7 @@ public class BaseType {
     public static void main(String[] args) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
-        final int year= calendar.get(Calendar.YEAR);
+        final int year = calendar.get(Calendar.YEAR);
         System.out.println(year);
     }
 

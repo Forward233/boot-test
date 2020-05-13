@@ -8,7 +8,7 @@ import lombok.Data;
  * @Description:
  */
 @Data
-public class Actor implements IActor{
+public class Actor implements IActor {
 
     private String name;
 
@@ -16,19 +16,20 @@ public class Actor implements IActor{
      * @param money
      */
     @Override
-    public void basicAct(float money){
-        System.out.println("拿到"+money+"钱，开始初级表演");
+    public void basicAct(float money) {
+        System.out.println("拿到" + money + "钱，开始初级表演");
     }
 
     /**
      * @param money
      */
     @Override
-    public void advancedAct(float money){
-        System.out.println("拿到"+money+"钱，开始高级表演");
+    public void advancedAct(float money) {
+        System.out.println("拿到" + money + "钱，开始高级表演");
     }
 
-    public void setName(String name){
+    @Override
+    public void setName(String name) {
         System.out.println("开始赋值为..." + name);
         this.name = name;
     }

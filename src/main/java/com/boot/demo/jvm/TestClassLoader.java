@@ -12,18 +12,16 @@ import java.nio.channels.WritableByteChannel;
  * Author: yhl
  * DateTime: 2019/12/4 21:12
  * Description: 自定义类加载
- *              需要继承ClassLoader，重写findClass
+ * 需要继承ClassLoader，重写findClass
  */
 public class TestClassLoader extends ClassLoader {
 
     /**
-     *
-     *
-     *  此路径即时想要加载的外部class路径
+     * 此路径即时想要加载的外部class路径
      */
     private String filePath;
 
-    TestClassLoader(String filePath){
+    TestClassLoader(String filePath) {
         this.filePath = filePath;
     }
 

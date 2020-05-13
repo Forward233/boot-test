@@ -7,6 +7,7 @@ package com.boot.demo.base.proxy;
  */
 public interface IActor {
     void basicAct(float money);
+
     void advancedAct(float money);
 
     void setName(String name);

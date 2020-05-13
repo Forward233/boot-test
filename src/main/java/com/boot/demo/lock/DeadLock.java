@@ -39,11 +39,11 @@ class DeadLock {
     }
 
     synchronized void method5(int i) {
-        System.out.println(i+ " method5");
+        System.out.println(i + " method5");
     }
 
     synchronized void method6(int i) {
-        System.out.println(i+" method6");
+        System.out.println(i + " method6");
 
     }
 
@@ -88,7 +88,7 @@ class DeadLock {
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                deadLock2.method6(i+10);
+                deadLock2.method6(i + 10);
             }
         }).start();
 

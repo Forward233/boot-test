@@ -5,8 +5,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * @author: yhl
  * @DateTime: 2020/3/6 7:13
- * @Description:
- * [究竟什么是可重入锁？_Java_Lovnx-CSDN博客](https://blog.csdn.net/rickiyeat/article/details/78314451)
+ * @Description: [究竟什么是可重入锁？_Java_Lovnx-CSDN博客](https://blog.csdn.net/rickiyeat/article/details/78314451)
  */
 public class ReEntryLock {
 

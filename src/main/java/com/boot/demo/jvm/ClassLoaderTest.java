@@ -8,7 +8,7 @@ import java.io.InputStream;
  * @DateTime: 2019/12/4 15:26
  * @Description:
  */
-public class ClassLoaderTest extends ClassLoader{
+public class ClassLoaderTest extends ClassLoader {
     public static void main(String[] args) throws Exception {
 
         /**
@@ -58,14 +58,14 @@ public class ClassLoaderTest extends ClassLoader{
 
         // 重写loadClass，破坏双亲委派原则，直接加载类到jvm，则会使用自定义的类加载器
         Object loadObject = load.loadClass("com.boot.demo.jvm.ClassLoaderTest").newInstance();
-        System.out.println("load:"+ loadObject.getClass().getClassLoader());
+        System.out.println("load:" + loadObject.getClass().getClassLoader());
         System.out.println(loadObject instanceof com.boot.demo.jvm.ClassLoaderTest);
         System.out.println("------------------------------------------------------");
         // 重写findClass，由于此类在类路径classpath下已经编译好，册会用applicationClassLoader来加载，
         // 如果要使用自定义累加器的加载，则应该使用类路径classpath外的一个class文件，并且类路径下不能包含此class
         // 才能使用到自定义的类加载器
         Object findObject = find.loadClass("com.boot.demo.jvm.ClassLoaderTest").newInstance();
-        System.out.println("find:"+ findObject.getClass().getClassLoader());
+        System.out.println("find:" + findObject.getClass().getClassLoader());
         System.out.println(findObject instanceof com.boot.demo.jvm.ClassLoaderTest);
     }
 }

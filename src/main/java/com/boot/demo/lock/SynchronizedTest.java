@@ -3,8 +3,7 @@ package com.boot.demo.lock;
 /**
  * @author: yhl
  * @DateTime: 2020/3/6 7:49
- * @Description:
- * https://blog.csdn.net/weixin_40616523/article/details/87883267
+ * @Description: https://blog.csdn.net/weixin_40616523/article/details/87883267
  */
 public class SynchronizedTest {
 

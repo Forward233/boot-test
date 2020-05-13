@@ -40,7 +40,7 @@ public class StaticTest {
         new B();
     }
 
-    public static void m(){
+    public static void m() {
         y = x++ + ++x;
     }
 
@@ -49,12 +49,14 @@ public class StaticTest {
     }
 
     @Data
-    static class A{
+    static class A {
         public A() {
         }
+
         public A(String a) {
             this.a = a;
         }
+
         private String a;
         private String b;
     }
@@ -62,6 +64,7 @@ public class StaticTest {
     static class B extends A {
         public B() {
         }
+
         public B(String a) {
             super(a);
         }

@@ -8,7 +8,7 @@ package com.boot.demo.lock;
 public class MultiThread {
 
     // static 修饰的方法，synchronized就为类锁，相当于synchronized (this)
-    public synchronized  void printNum(String tag) {
+    public synchronized void printNum(String tag) {
         try {
             int num = 0;
             if (tag.equals("a")) {
