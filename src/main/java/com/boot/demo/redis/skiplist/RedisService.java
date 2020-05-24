@@ -17,4 +17,20 @@ public class RedisService {
 
     public void zSet() {
     }
+
+    public static String s = "abc";
+    public static void main(String[] args) {
+
+        // 编译时放在常量池
+        String s1 = "abc";
+        String s2 = "a";
+        // 运行时编译，放在堆中
+        String s3 = s2 + "bc";
+        System.out.println(s1 == s3);
+
+        byte a = 127;
+        byte b = 127;
+        b = (byte) (a + b); // 报编译错误:cannot convert from int to byte
+        b += a;
+    }
 }

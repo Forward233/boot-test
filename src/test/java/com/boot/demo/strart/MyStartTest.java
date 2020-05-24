@@ -1,9 +1,6 @@
 package com.boot.demo.strart;
 
 import com.boot.demo.DemoApplicationTests;
-import com.starter.mystarter.service.HelloService;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author: yhl
@@ -12,14 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MyStartTest extends DemoApplicationTests {
 
-    @Autowired
-    private HelloService helloService;
+//    @Autowired
+//    private HelloService helloService;
 
-    @Test
-    public void testStarter() {
-        final String world = helloService.sayHello("world");
-        System.out.println(world);
-    }
+//    @Test
+//    public void testStarter() {
+//        final String world = helloService.sayHello("world");
+//        System.out.println(world);
+//    }
+//
+//    public static void main(String[] args) {
+//        System.out.println(500);
+//    }
 
 }
 
