@@ -6,4 +6,5 @@ package com.boot.demo.spring;
  * @Description:
  */
 public class MyBean {
+
 }
