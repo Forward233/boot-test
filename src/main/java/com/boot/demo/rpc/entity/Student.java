@@ -1,6 +1,7 @@
 package com.boot.demo.rpc.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @Description:
  */
 @Data
+@ToString
 public class Student implements Serializable {
 
     private static final long serialVersionUID = 3769184878896913085L;
@@ -17,4 +19,5 @@ public class Student implements Serializable {
     private String name;
     private int age;
     private String sex;
+
 }
