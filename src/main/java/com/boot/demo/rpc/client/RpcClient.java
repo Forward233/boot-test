@@ -25,6 +25,7 @@ public class RpcClient {
             oout = new ObjectOutputStream(server.getOutputStream());
             oout.writeObject(request);
             oout.flush();
+
             oin = new ObjectInputStream(server.getInputStream());
             Object res = oin.readObject();
             RpcResponse response;

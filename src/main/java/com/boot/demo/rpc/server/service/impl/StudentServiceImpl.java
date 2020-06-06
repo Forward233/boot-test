@@ -2,6 +2,7 @@ package com.boot.demo.rpc.server.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.boot.demo.rpc.RpcService;
 import com.boot.demo.rpc.entity.Student;
 import com.boot.demo.rpc.server.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,9 @@ import lombok.extern.slf4j.Slf4j;
  * @Description:
  */
 @Slf4j
+@RpcService(StudentService.class)
 public class StudentServiceImpl implements StudentService {
+
     @Override
     public Student getInfo() {
         Student student = new Student();

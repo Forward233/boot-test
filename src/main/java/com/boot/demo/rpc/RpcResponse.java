@@ -1,6 +1,7 @@
 package com.boot.demo.rpc;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @Description:
  */
 @Data
+@ToString
 public class RpcResponse implements Serializable {
     private static final long serialVersionUID = -1383587821897428941L;
 
