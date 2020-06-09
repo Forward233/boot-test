@@ -1,7 +1,7 @@
 package com.boot.demo.redis.bitmap;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * @author: yhl
@@ -11,16 +11,14 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 public class BitMapTest {
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private RedisTemplate<Object, Object> redisTemplate;
 
-    void bitMaptest(){
-        long userId = 313213L;
-        redisTemplate.opsForValue().setBit("test_bit", userId, true);
+    void test() {
+//        redisTemplate.opsForValue().setBit()
     }
 
     public static void main(String[] args) {
-        String b = "a";
-        System.out.println(b.getBytes().length);
+
     }
 
 }

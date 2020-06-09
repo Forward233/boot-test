@@ -14,8 +14,8 @@ import java.lang.reflect.Proxy;
  */
 @Slf4j
 public class RpcClientProxy implements InvocationHandler {
-    private String host;
-    private int port;
+    private final String host;
+    private final int port;
 
     public RpcClientProxy(String host, int port) {
         this.host = host;
