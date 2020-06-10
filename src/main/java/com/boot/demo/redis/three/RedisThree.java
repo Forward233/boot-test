@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
@@ -25,14 +26,15 @@ public class RedisThree {
 
     private static AtomicInteger integer = new AtomicInteger();
 
-    public void cacheBreakdown() {
+    public void cacheBreakdown(CountDownLatch countDownLatch) throws InterruptedException {
         String key = "hotKey";
         try {
             if (!redisTemplate.hasKey(key)) {
+                countDownLatch.await();
                 lock.lock();
                 if (redisTemplate.hasKey(key)) {
                     String value = redisTemplate.opsForValue().get(key);
-                    log.info("从缓存中获取...");
+                    log.info("从缓存中获取...释放锁....");
                     lock.unlock();
                 } else {
                     //getFromDB
@@ -48,6 +50,9 @@ public class RedisThree {
 
         }finally {
         }
-
     }
+    public void testRed() {
+        System.out.println("1111");
+    }
+
 }

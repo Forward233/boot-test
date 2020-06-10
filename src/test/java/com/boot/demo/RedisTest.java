@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -24,20 +25,37 @@ public class RedisTest {
     private RedisThree redisThree;
 
     @Autowired
-    TaskExecutor taskExecutor;
+    private TaskExecutor taskExecutor;
 
     @Test
-    void testRedis() {
-        stringRedisTemplate.opsForValue().set("test_order", "1", 1000, TimeUnit.MILLISECONDS);
-        Long test_order = stringRedisTemplate.opsForValue().increment("test_order");
-        System.out.println(test_order);
+    void testRedis() throws InterruptedException {
+        taskExecutor.execute(()->{
+            try {
+                stringRedisTemplate.opsForValue().set("test_order", "1", 1000, TimeUnit.MILLISECONDS);
+                Long test_order = stringRedisTemplate.opsForValue().increment("test_order");
+                System.out.println(test_order);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        Thread.sleep(300000);
+
     }
 
     @Test
-    public void testThree() {
+    public void testThree() throws InterruptedException {
+        CountDownLatch countDownLatch = new CountDownLatch(1);
         for (int i = 0; i < 20; i++) {
-            taskExecutor.execute(() -> redisThree.cacheBreakdown());
+            taskExecutor.execute(() -> {
+                try {
+                    redisThree.cacheBreakdown(countDownLatch);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
         }
+        countDownLatch.countDown();
+        Thread.sleep(300000);
     }
-
 }
