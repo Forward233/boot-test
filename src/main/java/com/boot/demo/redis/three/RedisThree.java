@@ -21,9 +21,6 @@ public class RedisThree {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-//    @Autowired
-//    private Redisson redisson;
-
     ReentrantLock lock = new ReentrantLock();
 
     private static AtomicInteger integer = new AtomicInteger();
@@ -36,6 +33,7 @@ public class RedisThree {
                 if (redisTemplate.hasKey(key)) {
                     String value = redisTemplate.opsForValue().get(key);
                     log.info("从缓存中获取...");
+                    lock.unlock();
                 } else {
                     //getFromDB
                     String value = "getFromDB";
@@ -47,7 +45,7 @@ public class RedisThree {
             } else {
                 log.info("-----------从缓存中获取...");
             }
-            lock.unlock();
+
         }finally {
         }
 
