@@ -55,6 +55,7 @@ public class RedisTest {
                 }
             });
         }
+        Thread.sleep(3000);
         countDownLatch.countDown();
         Thread.sleep(300000);
     }
