@@ -16,16 +16,16 @@ public class ThreadLocalDemo extends Thread {
     public static void main(String[] args) throws InterruptedException {
 
 
-//        ResultData data = new ResultData();
-//        ThreadLocalDemo threadLocalDemo1 = new ThreadLocalDemo(data);
-//        ThreadLocalDemo threadLocalDemo2 = new ThreadLocalDemo(data);
-//        ThreadLocalDemo threadLocalDemo3 = new ThreadLocalDemo(data);
-//        threadLocalDemo1.start();
-//        threadLocalDemo2.start();
-//        threadLocalDemo3.start();
-//        Thread.sleep(300);
-//
-//        System.out.println(ResultData.count);
+        ResultData data = new ResultData();
+        ThreadLocalDemo threadLocalDemo1 = new ThreadLocalDemo(data);
+        ThreadLocalDemo threadLocalDemo2 = new ThreadLocalDemo(data);
+        ThreadLocalDemo threadLocalDemo3 = new ThreadLocalDemo(data);
+        threadLocalDemo1.start();
+        threadLocalDemo2.start();
+        threadLocalDemo3.start();
+        Thread.sleep(300);
+
+        System.out.println(ResultData.count);
     }
 
     @Override
@@ -35,16 +35,18 @@ public class ThreadLocalDemo extends Thread {
         }
     }
 
-}
+    static class ResultData {
+        // 生成序列号共享变量
+        public static Integer count = 0;
+        private static ThreadLocal<Integer> threadLocal = ThreadLocal.withInitial(() -> count);
 
-class ResultData {
-    // 生成序列号共享变量
-    public static Integer count = 0;
-    private static ThreadLocal<Integer> threadLocal = ThreadLocal.withInitial(() -> count);
-
-    public Integer getNum() {
-        int count = threadLocal.get() + 1;
-        threadLocal.set(count);
-        return count;
+        public Integer getNum() {
+            int count = threadLocal.get() + 1;
+            threadLocal.set(count);
+            return count;
+        }
     }
+
 }
+
+
