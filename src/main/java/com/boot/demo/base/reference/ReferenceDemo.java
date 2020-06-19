@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,10 +19,27 @@ import java.util.concurrent.TimeUnit;
  * @DateTime: 2020/6/18 7:15
  * @Description:
  */
-public class WeakReferenceDemo {
+public class ReferenceDemo {
 
     public static void main(String[] args) {
-        weakReferenceTest();
+        softReferenceTest();
+    }
+
+    @SneakyThrows
+    public static void softReferenceTest()  {
+        Product product = new Product("test");
+        ReferenceQueue<Product> referenceQueue = new ReferenceQueue<>();
+        SoftReference<Product> softReference = new SoftReference<>(new Product("yhl"), referenceQueue);
+
+        System.gc();
+        TimeUnit.SECONDS.sleep(2);
+        System.out.println(product);
+        System.out.println(softReference.get());
+
+        Reference<? extends Product> reference;
+        while ((reference = referenceQueue.poll()) != null) {
+            System.out.println(reference.get());
+        }
     }
 
     @SneakyThrows
