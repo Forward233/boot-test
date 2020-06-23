@@ -119,7 +119,7 @@ public final class $Proxy0 extends Proxy implements Proxy0 {
         }
     }
 
-    public final void saiHi(String var1) throws  {
+    public final void sayHi(String var1) throws  {
         try {
             // 先调用$Proxy0的invoke()方法，在invoke()方法中，调用Proxy0的invoke()方法
             super.h.invoke(this, m3, new Object[]{var1});
@@ -181,7 +181,7 @@ public final class $Proxy0 extends Proxy implements Proxy0 {
             m0 = Class.forName("java.lang.Object").getMethod("hashCode");
             m8 = Class.forName("com.sun.proxy.$Proxy0").getMethod("wait");
             m12 = Class.forName("com.sun.proxy.$Proxy0").getMethod("notify");
-            m3 = Class.forName("com.sun.proxy.$Proxy0").getMethod("saiHi", Class.forName("java.lang.String"));
+            m3 = Class.forName("com.sun.proxy.$Proxy0").getMethod("sayHi", Class.forName("java.lang.String"));
             m5 = Class.forName("com.sun.proxy.$Proxy0").getMethod("newProxyInstance", Class.forName("java.lang.ClassLoader"), Class.forName("[Ljava.lang.Class;"), Class.forName("java.lang.reflect.InvocationHandler"));
             m10 = Class.forName("com.sun.proxy.$Proxy0").getMethod("wait", Long.TYPE);
             m4 = Class.forName("com.sun.proxy.$Proxy0").getMethod("isProxyClass", Class.forName("java.lang.Class"));

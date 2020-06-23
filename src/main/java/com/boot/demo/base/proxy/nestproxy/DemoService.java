@@ -6,5 +6,5 @@ package com.boot.demo.base.proxy.nestproxy;
  * @Description:
  */
 public interface DemoService {
-    void saiHi(String name);
+    void sayHi(String name);
 }

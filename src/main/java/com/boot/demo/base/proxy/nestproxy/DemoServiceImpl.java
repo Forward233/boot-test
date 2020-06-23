@@ -7,7 +7,7 @@ package com.boot.demo.base.proxy.nestproxy;
  */
 public class DemoServiceImpl implements DemoService {
     @Override
-    public void saiHi(String name) {
+    public void sayHi(String name) {
         System.out.println("Hi," + name);
     }
 }
