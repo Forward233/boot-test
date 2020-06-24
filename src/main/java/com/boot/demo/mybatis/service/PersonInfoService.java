@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service
-public class PersonService {
+public class PersonInfoService {
 
     @Autowired
     private PersonMapper personMapper;
 
     public void updatePerson() {
         LambdaUpdateWrapper<Person> updateWrapper = new LambdaUpdateWrapper<>();
-        updateWrapper.set(Person::getAge, 30).eq(Person::getId, 2);
+        updateWrapper.set(Person::getAge, 15).eq(Person::getId, 2);
         final int update = personMapper.update(null, updateWrapper);
     }
 }

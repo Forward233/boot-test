@@ -21,6 +21,7 @@ public class DemoServiceProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println(name + "执行前...");
+        // 反射
         Object object = method.invoke(target, args);
         System.out.println(name + "执行后...");
         return object;

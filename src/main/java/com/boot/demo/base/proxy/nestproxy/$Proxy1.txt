@@ -121,7 +121,7 @@ public final class $Proxy0 extends Proxy implements Proxy0 {
 
     public final void sayHi(String var1) throws  {
         try {
-            // 先调用$Proxy0的invoke()方法，在invoke()方法中，调用Proxy0的invoke()方法
+            // 先直接调用$Proxy0的invoke()方法，在invoke()方法中，反射调用Proxy0的invoke()方法
             super.h.invoke(this, m3, new Object[]{var1});
         } catch (RuntimeException | Error var3) {
             throw var3;
