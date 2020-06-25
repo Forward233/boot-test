@@ -1,4 +1,4 @@
-package com.boot.demo.base.proxy;
+package com.boot.demo.base.proxy.normal;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

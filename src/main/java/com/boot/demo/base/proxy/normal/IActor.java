@@ -1,4 +1,4 @@
-package com.boot.demo.base.proxy;
+package com.boot.demo.base.proxy.normal;
 
 /**
  * @author: yhl
@@ -6,9 +6,9 @@ package com.boot.demo.base.proxy;
  * @Description:
  */
 public interface IActor {
-    void basicAct(float money);
+    void act(float money);
 
-    void advancedAct(float money);
+    void sing(float money);
 
     void setName(String name);
 }

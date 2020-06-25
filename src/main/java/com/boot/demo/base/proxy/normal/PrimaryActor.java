@@ -1,4 +1,4 @@
-package com.boot.demo.base.proxy;
+package com.boot.demo.base.proxy.normal;
 
 import lombok.Data;
 
@@ -8,15 +8,15 @@ import lombok.Data;
  * @Description:
  */
 @Data
-public class Actor implements IActor {
+public class PrimaryActor implements IActor {
 
-    private String name;
+    private String name = "primary ";
 
     /**
      * @param money
      */
     @Override
-    public void basicAct(float money) {
+    public void act(float money) {
         System.out.println("拿到" + money + "钱，开始初级表演");
     }
 
@@ -24,13 +24,12 @@ public class Actor implements IActor {
      * @param money
      */
     @Override
-    public void advancedAct(float money) {
-        System.out.println("拿到" + money + "钱，开始高级表演");
+    public void sing(float money) {
+        System.out.println("拿到" + money + "钱，开始初级演唱");
     }
 
     @Override
     public void setName(String name) {
-        System.out.println("开始赋值为..." + name);
         this.name = name;
     }
 }

@@ -1,4 +1,4 @@
-package com.boot.demo.base.proxy;
+package com.boot.demo.base.proxy.normal;
 
 import java.lang.reflect.Proxy;
 
@@ -9,8 +9,8 @@ import java.lang.reflect.Proxy;
  */
 public class LambdaTest {
     public static void main(String[] args) {
-        final Actor actor = new Actor();
-        actor.setName("test");
+        final PrimaryActor primaryActor = new PrimaryActor();
+        primaryActor.setName("test");
         /**
          * 剧组找演员，通过经纪公司，它就是代理
          * 涉及的类：Proxy
@@ -21,12 +21,12 @@ public class LambdaTest {
          *      InvocationHandler:用于我们提供增强代码的接口。一般会写一个该接口的实现类。
          *                        实现类可以是匿名内部类。它的含义就是如何代理。这里的代码只能是谁用谁提供
          */
-        IActor proxyActor = (IActor) Proxy.newProxyInstance(actor.getClass().getClassLoader(), new Class<?>[]{IActor.class},
+        IActor proxyActor = (IActor) Proxy.newProxyInstance(primaryActor.getClass().getClassLoader(), new Class<?>[]{IActor.class},
                 (proxy, method, argss) ->
                 {
-                    Object o = method.invoke(actor, argss);
+                    Object o = method.invoke(primaryActor, argss);
                     if (method.getName().contains("set")) {
-                        System.out.println(actor.getName());
+                        System.out.println(primaryActor.getName());
                     }
                     /**
                      * 执行被代理对象的任何方法都会经过该方法，该方法有拦截的功能
@@ -41,12 +41,12 @@ public class LambdaTest {
                         Float money = (Float) argss[0];
                         if (money > 10000)
                             System.out.println("basicAct exec");
-                            method.invoke(actor, money);
+                            method.invoke(primaryActor, money);
                     }
                     if ("advancedAct".equals(method.getName())) {
                         Float money = (Float) argss[0];
                         if (money > 50000)
-                            method.invoke(actor, money);
+                            method.invoke(primaryActor, money);
                     }
                     return o;
                 });
