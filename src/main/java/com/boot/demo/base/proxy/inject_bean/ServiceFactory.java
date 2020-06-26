@@ -1,6 +1,7 @@
 package com.boot.demo.base.proxy.inject_bean;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.FactoryBean;
 
 import java.lang.reflect.InvocationHandler;
@@ -12,6 +13,7 @@ import java.lang.reflect.Proxy;
  * @Description:
  */
 @Data
+@Slf4j
 public class ServiceFactory<T> implements FactoryBean<T>{
 
     private Class<T> interfaceType;
@@ -23,9 +25,9 @@ public class ServiceFactory<T> implements FactoryBean<T>{
     }
 
     @Override
-    public T getObject() throws Exception {
+    public T getObject() {
         //这里主要是创建接口对应的实例，便于注入到spring容器中
-        InvocationHandler handler = new ServiceProxy<>(target);
+        InvocationHandler handler = new ServiceProxy(target);
         return (T) Proxy.newProxyInstance(interfaceType.getClassLoader(),
                 new Class[]{interfaces}, handler);
     }
