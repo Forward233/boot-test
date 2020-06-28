@@ -1,6 +1,8 @@
 package com.boot.demo.base.proxy.inject_bean;
 
+import com.alibaba.fastjson.JSON;
 import com.boot.demo.base.proxy.inject_bean.annotation.Proxy;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
@@ -32,6 +34,7 @@ import java.util.Set;
  * @Description:
  */
 @Component
+@Slf4j
 public class ServiceBeanDefinitionRegistry implements BeanDefinitionRegistryPostProcessor,
         ResourceLoaderAware, ApplicationContextAware {
 
@@ -40,6 +43,7 @@ public class ServiceBeanDefinitionRegistry implements BeanDefinitionRegistryPost
         //这里一般我们是通过反射获取需要代理的接口的clazz列表
         //比如判断包下面的类，或者通过某注解标注的类等等
         Set<Class<?>> beanClazzs = scannerPackages("com.boot.demo.base.proxy.inject_bean.service");
+        log.info("ServiceBeanDefinitionRegistry 执行动态代理生成类注入ioc容器，生成类列表：{}", JSON.toJSONString(beanClazzs));
         for (Class<?> beanClazz : beanClazzs) {
             Proxy annotation = beanClazz.getAnnotation(Proxy.class);
             if (annotation == null) {
@@ -60,6 +64,7 @@ public class ServiceBeanDefinitionRegistry implements BeanDefinitionRegistryPost
             // 注意，这里的BeanClass是生成Bean实例的工厂，不是Bean本身。
             // FactoryBean是一种特殊的Bean，其返回的对象不是指定类的一个实例，
             // 其返回的是该工厂Bean的getObject方法所返回的对象。
+            // 绑定Bean与FactoryBean的关联
             definition.setBeanClass(ServiceFactory.class);
 
             // 此处设置的属性可以FactoryBean实现类中获取
@@ -86,6 +91,15 @@ public class ServiceBeanDefinitionRegistry implements BeanDefinitionRegistryPost
      */
     private Set<Class<?>> scannerPackages(String basePackage) {
         Set<Class<?>> set = new LinkedHashSet<>();
+//        classpath 和 classpath* 区别：
+//        classpath：只会到你的class路径中查找找文件;
+//        classpath*：不仅包含class路径，还包括jar文件中(class路径)进行查找.
+//        classpath:--->/WEB-INF/classes/           【当前项目】
+//        classpath:/--->/WEB-INF/classes/          【当前项目】
+//        classpath*:--->/WEB-INF/classes/          【当前项目和该项目引用的所有jar包中的classes路径】
+//        classpath*:/--->/WEB-INF/classes/         【当前项目和该项目引用的所有jar包中的classes路径】
+
+        //classpath*:com/boot/demo/base/proxy/inject_bean/service/**/*.class
         String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
                 resolveBasePackage(basePackage) + '/' + DEFAULT_RESOURCE_PATTERN;
         try {

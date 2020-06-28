@@ -32,45 +32,45 @@ public class BeanLifeCycle implements InitializingBean, DisposableBean, BeanFact
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println("execution BeanFactoryAware.setBeanFactory()");
+        System.out.println("execute BeanFactoryAware.setBeanFactory()");
     }
 
     @Override
     public void setBeanName(String name) {
-        System.out.println("execution BeanNameAware.setBeanName()");
+        System.out.println("execute BeanNameAware.setBeanName()");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("execution InitializingBean.afterPropertiesSet()");
+        System.out.println("execute InitializingBean.afterPropertiesSet()");
     }
 
     @Override
     public void destroy() throws Exception {
-        System.out.println("execution DisposableBean.destroy()");
+        System.out.println("execute DisposableBean.destroy()");
     }
 
     @PostConstruct
     public void postConstruct() {
-        System.out.println("execution @PostConstruct()");
+        System.out.println("execute @PostConstruct()");
     }
 
     @PreDestroy
     public void preDestroy() {
-        System.out.println("execution @PreDestroy()");
+        System.out.println("execute @PreDestroy()");
     }
 
     public void initMethod() {
-        System.out.println("execution @Bean.initMethod()");
+        System.out.println("execute @Bean.initMethod()");
     }
 
     public void destroyMethod() {
-        System.out.println("execution @Bean.destroyMethod()");
+        System.out.println("execute @Bean.destroyMethod()");
     }
 
+    //ApplicationContextAware和EmbeddedValueResolverAware等等在后置处理器中调用
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println("execution ApplicationContextAware.setApplicationContext()");
-        this.applicationContext = applicationContext;
+        System.out.println("execute ApplicationContextAware.setApplicationContext()");
     }
 }

@@ -1,5 +1,6 @@
 package com.boot.demo.base.proxy.inject_bean2;
 
+import com.alibaba.fastjson.JSON;
 import com.boot.demo.base.proxy.inject_bean2.annotation.Proxy;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +35,7 @@ public class CustomizeScannerConfigurer implements BeanDefinitionRegistryPostPro
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
         List<Class<?>> classNames = Lists.newArrayList();
         PackageUtils.classNames(BASE_PACKAGES, classNames);
-
+        log.info("CustomizeScannerConfigurer 执行动态代理生成类注入ioc容器，生成类列表：{}", JSON.toJSONString(classNames));
         for (Class<?> className : classNames) {
             Proxy proxy = className.getAnnotation(Proxy.class);
             String beanName = proxy.value();
