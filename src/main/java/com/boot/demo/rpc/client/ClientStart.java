@@ -12,7 +12,6 @@ public class ClientStart {
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
         RpcClientProxy proxy = new RpcClientProxy("127.0.0.1",8088);
         StudentService service =  proxy.getProxy(StudentService.class);
-//        System.out.println(service.getInfo());
         Student student = new Student();
         student.setName("yhl");
         student.setAge(26);
