@@ -1,12 +1,21 @@
 package com.boot.demo;
 
+import com.boot.demo.spring.listener.one.DemoApplicationListener;
+import com.boot.demo.spring.listener.one.DemoEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class DemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
+        // addApplicationListener()可由以下方法实现
+        // 1.meta-info/spring.factories配置
+        // 2.application.properties中配置
+        // 3.在事件方法上添加@EventListener
+        context.addApplicationListener(new DemoApplicationListener());
+        context.publishEvent(new DemoEvent(new Object(), "Hello world"));
     }
 }
