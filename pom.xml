@@ -188,6 +188,12 @@
             <version>3.2.6</version>
         </dependency>
 
+        <!--接口防重幂等组件-->
+        <dependency>
+            <groupId>com.github.lxchinesszz</groupId>
+            <artifactId>tomato-spring-boot-starter</artifactId>
+            <version>1.0.1.RELEASE</version>
+        </dependency>
 
 
     </dependencies>
