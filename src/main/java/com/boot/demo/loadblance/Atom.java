@@ -13,4 +13,6 @@ import lombok.Data;
 public class Atom {
     private String key;
     private int weight;
+
+
 }

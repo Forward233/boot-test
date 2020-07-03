@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Import;
 /**
  * @author: yhl
  * @DateTime: 2020/7/1 15:10
- * @Description:
+ * @Description: [Spring（32）——ImportSelector介绍_Elim的博客-CSDN博客_importselector]
+ * (https://blog.csdn.net/elim168/article/details/88131614)
  */
 @Configuration
 //@Import(HelloImportSelector.class)

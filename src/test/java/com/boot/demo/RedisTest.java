@@ -59,4 +59,9 @@ public class RedisTest {
         countDownLatch.countDown();
         Thread.sleep(300000);
     }
+
+    public static void main(String[] args) {
+        String rootPath = RedisTest.class.getResource("/").getPath();
+        System.out.println(rootPath);
+    }
 }
