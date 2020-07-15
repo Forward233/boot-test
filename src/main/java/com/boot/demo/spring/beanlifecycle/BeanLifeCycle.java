@@ -15,7 +15,8 @@ import javax.annotation.PreDestroy;
  * @Description:
  */
 @Data
-public class BeanLifeCycle implements InitializingBean, DisposableBean, BeanFactoryAware, BeanNameAware, ApplicationContextAware {
+public class BeanLifeCycle implements InitializingBean, DisposableBean, BeanFactoryAware,
+        BeanNameAware, ApplicationContextAware, FactoryBean {
 
     private String name;
 
@@ -72,5 +73,21 @@ public class BeanLifeCycle implements InitializingBean, DisposableBean, BeanFact
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         System.out.println("execute ApplicationContextAware.setApplicationContext()");
+    }
+
+    @Override
+    public Object getObject() {
+        System.out.println("execute FactoryBean.getObject()");
+        return null;
+    }
+
+    @Override
+    public Class<?> getObjectType() {
+        return null;
+    }
+
+    @Override
+    public boolean isSingleton() {
+        return true;
     }
 }

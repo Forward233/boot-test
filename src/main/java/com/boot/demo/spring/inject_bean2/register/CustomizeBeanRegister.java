@@ -52,12 +52,28 @@ public class CustomizeBeanRegister implements BeanDefinitionRegistryPostProcesso
             Object actualBean = getBean(className);
 
             // 为被代理对象中依赖的属性注入值
+            // BeanDefinitionRegistryPostProcessor最先执行
+            // 从ApplicationContext中获取bean，首先会去创建bean，
             Field[] actualBeanFields = actualBean.getClass().getDeclaredFields();
             for (Field actualBeanField : actualBeanFields) {
+                Object bean = null;
+                try {
+                    bean = getBean(actualBeanField.getType());
+                } catch (Exception e) {
+                    // 排除log类
+                    log.error("ioc 容器中未找到此bean...");
+                    continue;
+                }
                 if (actualBeanField.getModifiers() == Modifier.PRIVATE) {
                     actualBeanField.setAccessible(true);
                     try {
-                        actualBeanField.set(actualBean, getBean(actualBeanField.getType()));
+                        actualBeanField.set(actualBean, bean);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        actualBeanField.set(actualBean, bean);
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }

@@ -26,6 +26,8 @@ import org.springframework.util.ClassUtils;
 
 import java.beans.Introspector;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -64,6 +66,33 @@ public class ServiceBeanDefinitionRegistry implements BeanDefinitionRegistryPost
             // 则FactoryBean中需要提供包含该属性的构造方法，否则会注入失败
             definition.getConstructorArgumentValues().addGenericArgumentValue(beanClazz);
 
+            // 为代理bean注入属性
+            Object actualBean = applicationContext.getBean(beanClazz);
+            Field[] declaredFields = actualBean.getClass().getDeclaredFields();
+            for (Field declaredField : declaredFields) {
+                Object bean = null;
+                try {
+                    bean = applicationContext.getBean(declaredField.getType());
+                } catch (BeansException e) {
+                    // 排除log类
+                    log.error("ioc 容器中未找到此bean...");
+                    continue;
+                }
+                if (declaredField.getModifiers() == Modifier.PRIVATE) {
+                    declaredField.setAccessible(true);
+                    try {
+                        declaredField.set(actualBean, bean);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        declaredField.set(actualBean, bean);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
             // 注意，这里的BeanClass是生成Bean实例的工厂，不是Bean本身。
             // FactoryBean是一种特殊的Bean，其返回的对象不是指定类的一个实例，
             // 其返回的是该工厂Bean的getObject方法所返回的对象。

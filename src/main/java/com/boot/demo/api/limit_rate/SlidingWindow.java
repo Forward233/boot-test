@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author: yhl
  * @DateTime: 2020/7/6 6:50
  * @Description:
+ * [【限流算法】java实现滑动时间窗口算法_DreamSeeker-CSDN博客_滑动时间窗口算法](https://blog.csdn.net/king0406/article/details/103129786)
  */
 @Slf4j
 public class SlidingWindow {
@@ -57,7 +58,10 @@ public class SlidingWindow {
                 e.printStackTrace();
             }
 
-        }, 5000, 1000, TimeUnit.SECONDS);
+        }, 5, 1, TimeUnit.SECONDS);
     }
 
+    public static void main(String[] args) {
+        new SlidingWindow().slideWindow();
+    }
 }
