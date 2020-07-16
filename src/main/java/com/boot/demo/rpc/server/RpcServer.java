@@ -4,6 +4,7 @@ import com.boot.demo.rpc.RpcService;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
@@ -45,7 +46,14 @@ public class RpcServer {
         }
 
         for (Class<?> aClass : classes) {
-            Object obj = aClass.newInstance();
+            Object obj = null;
+            try {
+                obj = aClass.getDeclaredConstructor().newInstance();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
             service.put(aClass.getAnnotation(RpcService.class).value().getName(), obj);
         }
         return service;

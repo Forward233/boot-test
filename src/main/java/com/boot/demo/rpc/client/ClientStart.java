@@ -9,13 +9,14 @@ import com.boot.demo.rpc.server.service.StudentService;
  * @Description:
  */
 public class ClientStart {
-    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
+    public static void main(String[] args) {
         RpcClientProxy proxy = new RpcClientProxy("127.0.0.1",8088);
         StudentService service =  proxy.getProxy(StudentService.class);
         Student student = new Student();
         student.setName("yhl");
         student.setAge(26);
         student.setSex("male");
-        service.printInfo(student);
+        Boolean aBoolean = service.printInfo(student);
+        System.out.println(aBoolean);
     }
 }

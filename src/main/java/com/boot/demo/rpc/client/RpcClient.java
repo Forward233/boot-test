@@ -3,6 +3,7 @@ package com.boot.demo.rpc.client;
 import com.boot.demo.rpc.RpcRequest;
 import com.boot.demo.rpc.RpcResponse;
 
+import java.io.IOException;
 import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -39,16 +40,16 @@ public class RpcClient {
                 throw response.getError();
             }
             return response.getResult();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
-        }finally {
-            if(oin != null) {
+        } finally {
+            if (oin != null) {
                 oin.close();
             }
-            if(oout != null) {
+            if (oout != null) {
                 oout.close();
             }
-            if(server != null) {
+            if (server != null) {
                 server.close();
             }
         }
