@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 // 标识该类为动态代理类
-@Proxy(value = "systemService" ,interceptor = MyInterceptor.class)
+@Proxy(value = "iSystemService" ,interceptor = MyInterceptor.class)
 public class SystemServiceImpl implements ISystemService {
 
     @Autowired

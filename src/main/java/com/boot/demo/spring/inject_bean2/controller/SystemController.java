@@ -1,6 +1,6 @@
 package com.boot.demo.spring.inject_bean2.controller;
 
-import com.boot.demo.spring.inject_bean2.service.impl.SystemServiceImpl;
+import com.boot.demo.spring.inject_bean2.service.ISystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SystemController {
 
     @Autowired
-    private SystemServiceImpl iSystemService;
+    private ISystemService iSystemService;
 
     @RequestMapping("/saveRecord")
     public void saveRecord() {
