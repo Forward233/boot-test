@@ -28,6 +28,8 @@ public class OrderService {
 
     public void orderWithDecr(OrderReq orderReq) {
 
+        // 前端对请求个数做计数，超过多少个请求之后，立即抢购按钮置灰。
+
         try {
             // 提前预热库存key到redis,以下可省略
             String key = "product:" + orderReq.getProductId();
@@ -46,12 +48,15 @@ public class OrderService {
                 return;
             }
 
+            // 假如瞬时并发为10000，但进入mysql执行减库存的逻辑只有库存个数个请求，所以大大降低了数据库的压力
+
             // 超库存或者库存为0,redis中库存为0或者负，则表示已没有库存，原子操作
             if (redisTemplate.opsForValue().decrement(key, buyNum) >= 0) {
                 //mysql减库存，生成订单，需要支持事务
                 log.info("购买成功，库存：{}，购买数量：{}", num, orderReq.getBuyNum());
                 // todo
-                // mysql 减库存
+                // 1.mysql 减库存  乐观锁实现，如果减库存失败，补偿库存。
+                // 2.生成订单，失败，补偿库存。
             } else {
                 // 补redis中库存
                 final Long increment = redisTemplate.opsForValue().increment(key, buyNum);

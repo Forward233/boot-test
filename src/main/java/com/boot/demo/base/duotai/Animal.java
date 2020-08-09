@@ -10,7 +10,11 @@ class Animal {
     static int age = 20;
 
     public void eat() {
+        hookTest();
         System.out.println("动物吃饭");
+    }
+
+    protected void hookTest() {
     }
 
     public static void sleep() {

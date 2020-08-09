@@ -22,4 +22,8 @@ class Cat extends Animal {
         System.out.println("猫在抓老鼠");
     }
 
+    @Override
+    protected void hookTest() {
+        System.out.println("hook test");
+    }
 }
