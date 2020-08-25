@@ -15,5 +15,6 @@ public class EncryptTest {
 
         byte[] bytes = DigestUtils.md5Digest("aasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa".getBytes());
         System.out.println(bytes.length);
+        System.out.println(new String(bytes, "ios"));
     }
 }

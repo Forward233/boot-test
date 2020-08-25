@@ -6,4 +6,11 @@
 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
     <context:component-scan base-package="com.boot.demo"/>
+
+    <bean id="company" class="com.boot.demo.spring.cyclereference.Boss">
+        <property name="company" ref="company"/>
+    </bean>
+    <bean id="boss" class="com.boot.demo.spring.cyclereference.Company">
+        <property name="boss" ref="boss" />
+    </bean>
 </beans>

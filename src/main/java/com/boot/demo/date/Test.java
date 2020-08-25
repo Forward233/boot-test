@@ -39,9 +39,27 @@ public class Test {
 
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), actualMaximum, 23, 59, 59);
         //打印本月结束日的年月日时分秒格式
-
+        System.out.println(isInDate("2020-08-12 12:00:00","2020-08-15 12:00:00"));
 
     }
+
+    public static boolean isInDate(String startTime, String endTime){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date beginDate;
+        Date endDate;
+        Date date = new Date();
+        try {
+            beginDate = simpleDateFormat.parse(startTime);
+            endDate = simpleDateFormat.parse(endTime);
+            if (date.after(beginDate) && date.before(endDate)) {
+                return true;
+            }
+        } catch (ParseException e) {
+        }
+        return false;
+    }
+
+
 
 
 }
