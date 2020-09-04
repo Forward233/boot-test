@@ -7,9 +7,9 @@ package com.boot.demo.funcation;
  */
 public class CallBackTest<R> {
 
-    public void callbackTest(CallBackExecutor<R> success, CallBackExecutor<R> failuer) throws Throwable {
+    public void callbackTest(CallBackExecutor<R> success, CallBackExecutor<R> failure) throws Throwable {
         System.out.println(success.execute());
-        System.out.println(failuer.execute());
+        System.out.println(failure.execute());
     }
 
 

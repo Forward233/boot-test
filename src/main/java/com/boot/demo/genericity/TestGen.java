@@ -25,6 +25,9 @@ public class TestGen implements ITestGen<String> {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
         TestGen testGen = new TestGen();
         final String s = testGen.get(String.class);
+        Long aLong = 1L;
+        Long v = testGen.getV(aLong);
+        Integer integer = testGen.get(Integer.class);
     }
 
 }
