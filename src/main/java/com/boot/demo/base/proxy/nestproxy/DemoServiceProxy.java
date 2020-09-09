@@ -14,6 +14,10 @@ public class DemoServiceProxy implements InvocationHandler {
     private String name;
     private Object target;
 
+    public DemoServiceProxy(Object target) {
+        this.target = target;
+    }
+
     public DemoServiceProxy(String name) {
         this.name = name;
     }

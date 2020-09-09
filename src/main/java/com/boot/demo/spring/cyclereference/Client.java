@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Client {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(args);
         Boss boss = applicationContext.getBean("boss", Boss.class);
         System.out.println(boss);
     }

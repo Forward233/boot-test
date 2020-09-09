@@ -195,6 +195,12 @@
             <version>1.0.1.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>3.6.5</version>
+        </dependency>
+
 
     </dependencies>
 
