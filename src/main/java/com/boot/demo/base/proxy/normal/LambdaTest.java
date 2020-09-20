@@ -22,6 +22,7 @@ public class LambdaTest {
          *                        实现类可以是匿名内部类。它的含义就是如何代理。这里的代码只能是谁用谁提供
          */
         IActor proxyActor = (IActor) Proxy.newProxyInstance(primaryActor.getClass().getClassLoader(), new Class<?>[]{IActor.class},
+                // 相当于new InvocationHandler{} 实现匿名内部类
                 (proxy, method, argss) ->
                 {
                     Object o = method.invoke(primaryActor, argss);

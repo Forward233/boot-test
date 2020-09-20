@@ -54,9 +54,13 @@ public class OrderService {
             if (redisTemplate.opsForValue().decrement(key, buyNum) >= 0) {
                 //mysql减库存，生成订单，需要支持事务
                 log.info("购买成功，库存：{}，购买数量：{}", num, orderReq.getBuyNum());
-                // todo
-                // 1.mysql 减库存  乐观锁实现，如果减库存失败，补偿库存。
-                // 2.生成订单，失败，补偿库存。
+                try {
+                    // todo
+                    // 1.mysql 减库存 乐观锁实现，如果减库存失败，补偿库存。
+                    // 2.生成订单。
+                } catch (Exception e) {
+                    // 异常，补偿库存
+                }
             } else {
                 // 补redis中库存
                 final Long increment = redisTemplate.opsForValue().increment(key, buyNum);

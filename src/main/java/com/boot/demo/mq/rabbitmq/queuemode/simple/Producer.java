@@ -1,5 +1,12 @@
 package com.boot.demo.mq.rabbitmq.queuemode.simple;
 
+import com.boot.demo.mq.rabbitmq.util.MQConnectionUtils;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
 /**
  * @author: yhl
  * @DateTime: 2020/9/9 17:17
