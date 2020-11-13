@@ -1,4 +1,4 @@
-package com.boot.demo.genericity;
+package com.boot.demo.base.genericity;
 
 /**
  * @author: yhl

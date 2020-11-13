@@ -1,4 +1,4 @@
-package com.boot.demo.funcation;
+package com.boot.demo.base.funcation;
 
 /**
  * Author: yhl

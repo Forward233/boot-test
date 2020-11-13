@@ -1,5 +1,7 @@
 package com.boot.demo.base.polymorphism;
 
+import java.sql.Timestamp;
+
 /**
  * @author: yhl
  * @DateTime: 2020/6/15 21:07
@@ -16,5 +18,16 @@ public class Test {
         parent.hair();
         Children children = (Children) parent;
         children.inspire();
+        try {
+            String time = "1970-01-01 00:00:00.000000000.000000000";
+            com.alibaba.fastjson.JSONObject jsonObject = new com.alibaba.fastjson.JSONObject();
+            jsonObject.put("time", time);
+
+            Timestamp timestamp = jsonObject.getTimestamp("time");
+            System.out.println("time:" + timestamp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

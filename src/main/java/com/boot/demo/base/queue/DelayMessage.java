@@ -1,4 +1,4 @@
-package com.boot.demo.queue;
+package com.boot.demo.base.queue;
 
 import io.netty.util.HashedWheelTimer;
 import io.netty.util.Timer;

@@ -15,7 +15,6 @@ public class ThreadLocalDemo extends Thread {
 
     public static void main(String[] args) throws InterruptedException {
 
-
         ResultData data = new ResultData();
         ThreadLocalDemo threadLocalDemo1 = new ThreadLocalDemo(data);
         ThreadLocalDemo threadLocalDemo2 = new ThreadLocalDemo(data);

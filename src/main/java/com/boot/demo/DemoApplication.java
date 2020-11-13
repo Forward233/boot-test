@@ -5,8 +5,11 @@ import com.boot.demo.spring.listener.one.DemoEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
+@RestController
 public class DemoApplication {
 
     public static void main(String[] args) {
@@ -17,5 +20,10 @@ public class DemoApplication {
         // 3.在事件方法上添加@EventListener
         context.addApplicationListener(new DemoApplicationListener());
         context.publishEvent(new DemoEvent(new Object(), "Hello world"));
+    }
+
+    @RequestMapping("test")
+    public void test() {
+        throw new RuntimeException("hahahaha");
     }
 }
