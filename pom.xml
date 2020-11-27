@@ -206,6 +206,24 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.10</version>
         </dependency>
+
+
+        <!---Djdk.attach.allowAttachSelf=true-->
+        <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.9</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.gridkit.lab/jvm-attach-api -->
+        <dependency>
+            <groupId>org.gridkit.lab</groupId>
+            <artifactId>jvm-attach-api</artifactId>
+            <version>1.3</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
