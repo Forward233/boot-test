@@ -14,7 +14,7 @@ class Cat extends Animal {
         System.out.println("猫吃饭");
     }
 
-    public static void sleep() {
+    public void sleep() {
         System.out.println("猫在睡觉");
     }
 
@@ -25,5 +25,9 @@ class Cat extends Animal {
     @Override
     protected void hookTest() {
         System.out.println("hook test");
+    }
+
+    public void call() {
+        System.out.println("miao miao miao....");
     }
 }

@@ -17,7 +17,7 @@ class Animal {
     protected void hookTest() {
     }
 
-    public static void sleep() {
+    public void sleep() {
         System.out.println("动物在睡觉");
     }
 
