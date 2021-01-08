@@ -6,13 +6,15 @@ package com.boot.demo.base;
  * Description: write some description
  */
 public class BaseType {
-
-    public static void main(String[] args) {
-        String a = "a";
-        String b = new StringBuffer("a").append("b").toString();
-        String c = new String("a");
-        String d = "ab";
-        System.out.println(b == d);
+    public int data = 0;
+    public void increment() {
+        data++;
+        System.out.println(data);
     }
 
+    public static void main(String[] args) {
+        BaseType baseType = new BaseType();
+        baseType.increment();
+        System.out.println(baseType.data);
+    }
 }
