@@ -35,6 +35,7 @@ public class Reactor implements Runnable {
     public void run() {
         try {
             while (!Thread.currentThread().isInterrupted()) {
+                // 没有事件 会阻塞，不会空转
                 selector.select();
                 Set<SelectionKey> selectionKeys = selector.selectedKeys();
                 Iterator<SelectionKey> iterator = selectionKeys.iterator();
