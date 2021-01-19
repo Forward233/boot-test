@@ -21,8 +21,9 @@ public class ThreadExist {
         t1.start();
         t2.start();
 
-        for (int i = 0; i < 50; i++) {
-            ExecutorService executorService = Executors.newFixedThreadPool(20);
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        for (int i = 0; i < 30; i++) {
+            //ExecutorService executorService = Executors.newFixedThreadPool(20);
             executorService.execute(() -> {
                 int i1 = atomicInteger.incrementAndGet();
                 System.out.println(i1);
