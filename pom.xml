@@ -136,6 +136,12 @@
             <version>1.19</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.13</version>
+        </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>cn.dslcode</groupId>-->
 <!--            <artifactId>distributelock-spring-boot-starter</artifactId>-->
