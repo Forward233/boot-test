@@ -31,11 +31,15 @@ public class CountLimit {
             }
         } else {
             synchronized (CountLimit.class){
-                if (counter.get() < permitsPerSecond) {
-                    counter.incrementAndGet();
-                    return true;
+                if (now - timestamp < 1) {
+                    if (counter.get() < permitsPerSecond) {
+                        counter.incrementAndGet();
+                        return true;
+                    } else {
+                        return false;
+                    }
                 } else {
-                    System.out.println(System.currentTimeMillis());
+                    System.out.println(now);
                     counter = ZERO;
                     timestamp = now;
                     return false;
