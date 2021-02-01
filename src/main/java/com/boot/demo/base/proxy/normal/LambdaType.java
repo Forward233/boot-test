@@ -7,7 +7,7 @@ import java.lang.reflect.Proxy;
  * @DateTime: 2020/6/22 21:19
  * @Description:
  */
-public class LambdaTest {
+public class LambdaType {
     public static void main(String[] args) {
         final PrimaryActor primaryActor = new PrimaryActor();
         primaryActor.setName("test");
