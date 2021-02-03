@@ -1,11 +1,6 @@
 package com.boot.demo.base.reflect;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,15 +14,22 @@ public class FieldTest {
             <Integer, String> map = new HashMap<>();
 
     public static void main(String[] args) throws NoSuchFieldException {
-        Field map = FieldTest.class.getDeclaredField("map");
-        System.out.println(map.getType());
-        System.out.println(map.getGenericType());
-        ParameterizedType parameterizedType = (ParameterizedType) map.getGenericType();
-        Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
-        List<Type> types = Arrays.asList(actualTypeArguments);
-        System.out.println(types);
-        for (Type actualTypeArgument : actualTypeArguments) {
-            System.out.println(actualTypeArgument.getTypeName());
+        String s = "K";
+        switch (s) {
+            case "A":
+                System.out.println("aaaaaaaa");
+                /*
+                 * 注意：此处如果没有添加break，则代码会继续执行，即使不满足case条件也会执行，直到遇到break
+                 */
+                //break;
+            case "B":
+                System.out.println("bbbbbbbb");
+            case "C":
+                System.out.println("bbbbbbbb");
+                break;
+            default:
+                System.out.println("others");
+                break;
         }
     }
 
