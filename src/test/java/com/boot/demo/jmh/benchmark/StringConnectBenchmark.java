@@ -52,4 +52,5 @@ public class StringConnectBenchmark {
     public void print(String str) {
 
     }
+
 }
