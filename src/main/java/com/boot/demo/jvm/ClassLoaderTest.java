@@ -57,7 +57,7 @@ public class ClassLoaderTest extends ClassLoader {
         };
 
         // 重写loadClass，破坏双亲委派原则，直接加载类到jvm，则会使用自定义的类加载器
-        Object loadObject = load.loadClass("com.boot.demo.jvm.ClassLoaderTest").newInstance();
+        Object loadObject = load.loadClass("java.lang.Integer").newInstance();
         System.out.println("load:" + loadObject.getClass().getClassLoader());
         System.out.println(loadObject instanceof com.boot.demo.jvm.ClassLoaderTest);
         System.out.println("------------------------------------------------------");
