@@ -17,6 +17,6 @@ class PersonServiceTest {
 
     @Test
     void updatePerson() {
-        personInfoService.updatePerson();
+        personInfoService.update();
     }
 }
