@@ -1,4 +1,4 @@
-package com.boot.demo.redis.three;
+package com.boot.demo.redis;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 @Service
 @Slf4j
-public class RedisThree {
+public class CacheBreakdown {
 
     @Autowired
     private StringRedisTemplate redisTemplate;

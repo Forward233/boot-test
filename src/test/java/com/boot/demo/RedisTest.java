@@ -1,6 +1,6 @@
 package com.boot.demo;
 
-import com.boot.demo.redis.three.RedisThree;
+import com.boot.demo.redis.CacheBreakdown;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +23,7 @@ public class RedisTest {
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
-    private RedisThree redisThree;
+    private CacheBreakdown redisThree;
 
     @Autowired
     private TaskExecutor taskExecutor;
