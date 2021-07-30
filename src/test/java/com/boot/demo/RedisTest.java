@@ -7,9 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
-import java.util.Arrays;
+import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 /**
  * Author: yhl
@@ -41,7 +42,6 @@ public class RedisTest {
         });
 
         Thread.sleep(300000);
-
     }
 
     @Test
@@ -61,10 +61,5 @@ public class RedisTest {
         Thread.sleep(300000);
     }
 
-    public static void main(String[] args) {
-        String rootPath = RedisTest.class.getResource("/").getPath();
-        System.out.println(rootPath);
-        int asInt = Arrays.stream(new int[]{1, 2, 3}).max().getAsInt();
-        System.out.println(asInt);
-    }
+
 }

@@ -1,4 +1,4 @@
-package com.boot.demo.funcation.optional;
+package com.boot.demo.lambda.optional;
 
 import lombok.Data;
 

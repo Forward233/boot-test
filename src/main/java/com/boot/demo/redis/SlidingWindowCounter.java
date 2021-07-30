@@ -56,13 +56,13 @@ public class SlidingWindowCounter {
         }
     }
 
-    public Boolean isAccess(String key, Integer maxcount, Integer windowInSecond) {
+    public Boolean isAccess(String key, Integer maxCount, Integer windowInSecond) {
         // 加redis锁
         RLock lock = redisson.getLock("");
         // 如果在try{}代码块中加锁失败，finally中的代码无论如何都会执行，但是由于当前线程加锁失败并没有持有lock对象锁 ，所以程序会抛出异常。
         lock.lock();
         try {
-            if (getWindowCount(key) < maxcount) {
+            if (getWindowCount(key) < maxCount) {
                 increment(key, windowInSecond);
                 return true;
             }
@@ -78,11 +78,11 @@ public class SlidingWindowCounter {
     /**
      * https://blog.csdn.net/m0_38001814/article/details/113643374
      * @param key
-     * @param maxcount
+     * @param maxCount
      * @param windowInSecond
      * @return
      */
-    public Boolean isAccessWithLua(String key, Integer maxcount, Integer windowInSecond) {
+    public Boolean isAccessWithLua(String key, Integer maxCount, Integer windowInSecond) {
 
         return false;
     }
